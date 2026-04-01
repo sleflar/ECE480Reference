@@ -1,0 +1,88 @@
+# unified docker-compose configuration for rissar project
+# usage:
+#   development: docker-compose up
+#   production: docker-compose -f docker-compose.yml -f docker-compose.prod.yml up
+
+services:
+  # flask backend api
+  flask-backend:
+    container_name: flask-backend
+    build:
+      context: ./Local Website
+      dockerfile: Dockerfile
+      target: development
+    stdin_open: true
+    tty: true
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./Local Website:/app
+      - /app/__pycache__
+      - /var/run/docker.sock:/var/run/docker.sock  # Allow Flask to control Docker
+    environment:
+      - ROSBRIDGE_URL=ws://${CAR_IP}:9090
+      - COMPOSE_PROJECT_DIR=/app
+    restart: unless-stopped
+    healthcheck:
+      # Check the service from inside the container (use localhost) so the
+      # healthcheck tests the container's own webserver instead of a host
+      # network address which may be unreachable from the bridge network.
+      test: ["CMD", "curl", "-f", "http://127.0.0.1:8080/health"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 5s
+
+  # react frontend
+  react-frontend:
+    container_name: react-frontend
+    build:
+      context: ./Local Website/rissar-frontend
+      dockerfile: Dockerfile
+      target: development
+    stdin_open: true
+    tty: true
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./Local Website/rissar-frontend:/rissar-frontend
+      - /rissar-frontend/node_modules
+    environment:
+      - VITE_ROS_URL=ws://${CAR_IP}:9090
+      - VITE_BACKEND_URL=http://localhost:8080
+    depends_on:
+      flask-backend:
+        condition: service_healthy
+    restart: unless-stopped
+
+  # ros2 humble workspace
+  ros2-workspace:
+    container_name: ros2-workspace
+    build:
+      context: ./ROS2 Code
+      dockerfile: Dockerfile
+      target: development
+      args:
+        USERNAME: rissar
+        USER_UID: 1000
+        USER_GID: 1000
+    user: "1000:1000"
+    ports:
+      - "9090:9090"
+    stdin_open: true
+    tty: true
+    privileged: true  # required for hardware access
+    network_mode: "host"  # use host network for ROS2 discovery across machines
+    volumes:
+      - ./Local Website/replay_sessions:/home/rissar/ros2_ws/replays
+      - ./ROS2 Code:/home/rissar/ros2_ws
+      - /dev:/dev  # hardware device access
+    environment:
+      - ROS_DOMAIN_ID=7
+      - ROS_LOCALHOST_ONLY=0
+      # - RMW_IMPLEMENTATION=rmw_fastrtps_cpp
+      # - ROS_DISCOVERY_SERVER=192.168.8.2:11811
+      # - FASTRTPS_DEFAULT_PROFILES_FILE=/home/rissar/ros2_ws/fastdds_discovery.xml
+      - ROSBRIDGE_PORT=9090
+      - ROSBRIDGE_ADDRESS=${CAR_IP}
+    restart: unless-stopped

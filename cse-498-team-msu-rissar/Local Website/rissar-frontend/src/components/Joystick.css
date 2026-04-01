@@ -1,0 +1,337 @@
+.joystick-card {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  margin: 0;
+  background-color: #FFF;
+  border-radius: 16px;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.12);
+  border: 1px solid rgba(24, 98, 30, 0.25);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-height: 0;
+  flex: 1 1 auto;
+}
+
+.joystick-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  padding: 8px 12px;
+  background: #000;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  flex-wrap: wrap;
+  color: #FFF;
+}
+
+.joystick-card-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #FFF;
+  letter-spacing: 0.01em;
+}
+
+.joystick-header-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  justify-content: flex-end;
+}
+
+.joystick-card-body {
+  flex: 1 1 auto;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 0;
+  width: 100%;
+}
+
+.joystick-content {
+  flex: 1 1 auto;
+  display: flex;
+  gap: 12px;
+  min-height: 0;
+  align-items: stretch;
+}
+
+.joystick-main {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 0;
+}
+
+.joystick-status {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  width: 100%;
+  color: #000;
+  flex-shrink: 0;
+}
+
+.controller-status {
+  padding: 6px 12px;
+  background-color: #17453B;
+  color: #FFF;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.connection-status {
+  padding: 6px 12px;
+  background-color: #000;
+  color: #FFF;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.joystick-surface {
+  flex: 1 1 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 0;
+  padding: 6px 0;
+  max-height: 100%;
+}
+
+.control-button {
+  padding: 6px 12px;
+  font-size: 11px;
+  color: #FFF;
+  border: 1px solid #000;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: transform 0.15s ease, opacity 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+  flex: none;
+  min-width: 92px;
+  background-color: #000;
+}
+
+.control-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.control-button:not(:disabled):hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.control-button:not(:disabled):active {
+  transform: translateY(0);
+}
+
+.reverse-button {
+  background-color: #17453B;
+  border-color: #17453B;
+}
+
+.reverse-button:disabled {
+  background-color: #333;
+  border-color: #333;
+}
+
+.speed-button.active {
+  background-color: #17453B;
+  border-color: #17453B;
+  box-shadow: 0 0 0 2px rgba(23, 69, 59, 0.25);
+  transform: translateY(-1px);
+  opacity: 1;
+}
+
+.speed-button:not(.active) {
+  opacity: 0.85;
+}
+
+.speed-button:not(.active):hover {
+  background-color: #111;
+}
+
+.debug-button {
+  background-color: #000;
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.debug-button.active {
+  background-color: #17453B;
+  border-color: #17453B;
+}
+
+.joystick-base {
+  width: 100%;
+  height: auto;
+  max-width: 340px;
+  max-height: 340px;
+  aspect-ratio: 1;
+  background-color: #FFF;
+  border-radius: 50%;
+  border: 3px solid rgba(23, 69, 59, 0.35);
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 0 0 18px rgba(0, 0, 0, 0.08);
+  box-sizing: border-box;
+  max-height: 100%;
+}
+
+.joystick-knob {
+  width: 25%;
+  aspect-ratio: 1;
+  background-color: #000;
+  border: 2px solid #FFF;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  cursor: grab;
+  transition: transform 0.05s ease-out;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.joystick-knob:active {
+  cursor: grabbing;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.debug-panel {
+  width: 240px;
+  padding: 12px;
+  background-color: #000;
+  border-radius: 8px;
+  font-family: "Courier New", monospace;
+  color: #FFF;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border: 1px solid rgba(23, 69, 59, 0.35);
+  max-height: 200px;
+  overflow: auto;
+  flex-shrink: 0;
+}
+
+.debug-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.debug-title {
+  font-weight: bold;
+  color: #17453B;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.debug-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  padding: 4px 0;
+}
+
+.debug-row span:first-child {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.debug-row span:last-child {
+  color: #17453B;
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .joystick-card-header {
+    padding: 12px;
+  }
+
+  .joystick-card-body {
+    padding: 14px;
+    gap: 16px;
+  }
+
+  .joystick-header-buttons {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .joystick-content {
+    flex-direction: column;
+  }
+
+  .debug-panel {
+    width: 100%;
+    order: 2;
+  }
+
+  .joystick-main {
+    order: 1;
+  }
+
+  .control-button {
+    min-width: 100px;
+    font-size: 11px;
+    padding: 6px 12px;
+  }
+
+  .joystick-base {
+    width: min(100%, 300px);
+  }
+
+  .debug-panel {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .joystick-card-header {
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .joystick-header-buttons {
+    justify-content: flex-start;
+    gap: 8px;
+  }
+
+  .joystick-content {
+    flex-direction: column;
+  }
+
+  .debug-panel {
+    width: 100%;
+  }
+
+  .joystick-card-body {
+    padding: 12px;
+  }
+
+  .joystick-base {
+    width: min(100%, 200px);
+  }
+
+  .control-button {
+    padding: 8px 12px;
+    font-size: 11px;
+    width: 100%;
+    min-width: unset;
+  }
+
+  .controller-status,
+  .connection-status {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+}

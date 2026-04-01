@@ -1,0 +1,45 @@
+# build artifacts
+build/
+install/
+log/
+logs/
+
+# python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# ide
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# git
+.git/
+.gitignore
+
+# documentation
+*.md
+README*
+docs/
+
+# docker
+Dockerfile*
+docker-compose*.yml
+.dockerignore
+
+# os
+.DS_Store
+Thumbs.db
+
+# logs
+*.log
+*.logs
+
+# ros specific
+*.bag
+*.bag.active

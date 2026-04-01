@@ -1,0 +1,193 @@
+@import url('https://fonts.cdnfonts.com/css/super-brigade');
+@import "tailwindcss";
+
+
+.font-super-brigade {
+  font-family: 'Super Brigade', sans-serif;
+}
+
+.font-super-brigade-gradient {
+  font-family: 'Super Brigade Gradient', sans-serif;
+}
+
+.font-super-brigade-laser {
+  font-family: 'Super Brigade Laser', sans-serif;
+}
+
+.font-super-brigade-chrome {
+  font-family: 'Super Brigade Chrome', sans-serif;
+}
+
+@plugin "tailwindcss-animate";
+
+@custom-variant dark (&:is(.dark *));
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  height: 100dvh;
+  width: 100dvw;
+}
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --radius: 0.5rem;
+  --brand-green: #17453B;
+  --brand-white: #ffffff;
+  --brand-black: #000000;
+  --accent-green: #008208;
+  --accent-green-2: #008934;
+
+  --background: var(--brand-white);
+  --foreground: #0b0b0b;
+  --card: #f5f5f5;
+  --card-foreground: #0f1f1a;
+  --popover: var(--brand-white);
+  --popover-foreground: #0b0b0b;
+  --primary: var(--brand-green);
+  --primary-foreground: var(--brand-white);
+  --secondary: #eef2f0;
+  --secondary-foreground: var(--brand-green);
+  --muted: #f3f4f6;
+  --muted-foreground: #4b5563;
+  --accent: var(--accent-green);
+  --accent-foreground: var(--brand-white);
+  --destructive: #dc2626;
+  --destructive-foreground: var(--brand-white);
+  --border: #d8dedc;
+  --input: #d8dedc;
+  --ring: var(--accent-green-2);
+  --chart-1: var(--brand-green);
+  --chart-2: var(--accent-green);
+  --chart-3: var(--accent-green-2);
+  --chart-4: #0f8c6a;
+  --chart-5: #80c18c;
+  --sidebar: #f7f9f8;
+  --sidebar-foreground: #0b0b0b;
+  --sidebar-primary: var(--brand-green);
+  --sidebar-primary-foreground: var(--brand-white);
+  --sidebar-accent: var(--accent-green);
+  --sidebar-accent-foreground: var(--brand-white);
+  --sidebar-border: #d8dedc;
+  --sidebar-ring: var(--accent-green-2);
+}
+
+.dark {
+  --background: #1a1a1a;
+  --foreground: var(--brand-white);
+  --card: #282828;
+  --card-foreground: var(--brand-white);
+  --popover: #181818;
+  --popover-foreground: var(--brand-white);
+  --primary: var(--accent-green-2);
+  --primary-foreground: var(--brand-black);
+  --secondary: #161616;
+  --secondary-foreground: var(--brand-white);
+  --muted: #202020;
+  --muted-foreground: #d1d5db;
+  --accent: var(--accent-green);
+  --accent-foreground: var(--brand-white);
+  --destructive: #ef4444;
+  --destructive-foreground: var(--brand-black);
+  --border: #2a2a2a;
+  --input: #2a2a2a;
+  --ring: var(--accent-green-2);
+  --chart-1: var(--accent-green-2);
+  --chart-2: var(--accent-green);
+  --chart-3: #4ade80;
+  --chart-4: #a3e635;
+  --chart-5: #facc15;
+  --sidebar: #111111;
+  --sidebar-foreground: var(--brand-white);
+  --sidebar-primary: var(--accent-green-2);
+  --sidebar-primary-foreground: var(--brand-black);
+  --sidebar-accent: var(--accent-green);
+  --sidebar-accent-foreground: var(--brand-white);
+  --sidebar-border: #272727;
+  --sidebar-ring: var(--accent-green-2);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  input::placeholder {
+    color: var(--muted-foreground);
+    opacity: 0.5;
+  }
+
+  textarea::placeholder {
+    color: var(--muted-foreground);
+    opacity: 0.5;
+  }
+}
+
+/* Leaflet map z-index constraint */
+.leaflet-container {
+  z-index: 1 !important;
+}
+
+.leaflet-top,
+.leaflet-bottom {
+  z-index: 2 !important;
+}
+
+.leaflet-popup,
+.leaflet-tooltip {
+  z-index: 3 !important;
+}
+
+/* Modal overlay to grey out content */
+[data-dialog-visible="true"]::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2px);
+  z-index: 40;
+  pointer-events: auto;
+}

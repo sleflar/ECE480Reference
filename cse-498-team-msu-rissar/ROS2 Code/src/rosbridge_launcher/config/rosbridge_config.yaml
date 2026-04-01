@@ -1,0 +1,35 @@
+# rosbridge WebSocket server configuration for RISSAR
+# This file defines parameters for the rosbridge_server node
+
+# Network Configuration
+rosbridge_websocket:
+  ros__parameters:
+    # WebSocket server configuration
+    port: 9090                          # Default WebSocket port
+    address: "0.0.0.0"                  # Listen on all interfaces
+    
+    # Security settings
+    authenticate: false                 # Set to true in production with proper auth
+    # ssl: false                        # Enable for production
+    # certfile: ""                      # Path to SSL certificate
+    # keyfile: ""                       # Path to SSL private key
+    
+    # Message handling
+    fragment_timeout: 600               # Seconds before incomplete message is discarded
+    delay_between_messages: 0           # Throttle in milliseconds (0 = no throttle)
+    max_message_size: 10000000          # 10MB max message size
+    
+    # Topic filtering (empty string = allow all)
+    topics_glob: "[*]"                  # Whitelist topics using glob patterns
+    services_glob: "[*]"                # Whitelist services using glob patterns
+    params_glob: "[*]"                  # Whitelist parameters using glob patterns
+    
+    # Performance tuning
+    bson_only_mode: false               # Use BSON encoding instead of JSON
+    
+# rosapi configuration (provides service/topic introspection)
+rosapi:
+  ros__parameters:
+    topics_glob: "[*]"                  # Whitelist topics for introspection
+    services_glob: "[*]"                # Whitelist services for introspection
+    params_glob: "[*]"                  # Whitelist params for introspection

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LayoutConfiguration version="1.0" exported="2025-09-23T21:45:00.000Z">
+  <Grid>
+    <Columns>3</Columns>
+    <Rows>3</Rows>
+  </Grid>
+  <Cards>
+    <Card index="0" type="LiveFeed" />
+    <Card index="1" type="LiDar" />
+    <Card index="2" type="OnlineMap" />
+    <Card index="3" type="GNSS" />
+    <Card index="4" type="GNSS_chart" />
+    <Card index="5" type="IMU" />
+    <Card index="6" type="BrakeThrottle" />
+    <Card index="7" type="SteerAngle" />
+    <Card index="8" type="3dlidar" />
+  </Cards>
+</LayoutConfiguration>

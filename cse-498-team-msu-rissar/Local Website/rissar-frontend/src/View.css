@@ -1,0 +1,367 @@
+.view-container {
+  padding: 1vh;
+  font-family: Arial, sans-serif;
+  color: #0b0b0b;
+  height: calc(100dvh - 60px); /* subtract navbar height */
+  width: 100dvw;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  background-color: #f7f7f7;
+}
+
+.dark .view-container {
+  color: #f7f7f7;
+  background-color: #1f1f1f;
+}
+
+/* modal styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #18621f;
+  border-radius: 12px;
+  padding: 24px;
+  /* use relative sizing so modal fits smaller screens */
+  width: min(90vw, 500px);
+  max-width: 90vw;
+  color: white;
+  position: relative;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.modal-header h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 28px;
+  cursor: pointer;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-close:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+}
+
+.modal-body h3 {
+  margin: 0 0 12px 0;
+  font-size: 16px;
+}
+
+.preview-section {
+  margin-bottom: 24px;
+}
+
+.preview-grid {
+  display: grid;
+  gap: 0.5vh;
+  /* scale with modal size */
+  width: 60%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  margin: 0 auto;
+}
+
+.preview-cell {
+  background: white;
+  border: 2px solid #ffffff;
+  border-radius: 4px;
+}
+
+.controls-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.grid-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: bold;
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.grid-input {
+  width: 50px;
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  text-align: center;
+  font-size: 16px;
+}
+
+.save-button {
+  background: #003c0f;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  align-self: center;
+}
+
+.save-button:hover {
+  background: #002908;
+}
+
+/* grid layout system */
+.grid-container {
+  display: grid;
+  gap: 0.5vw;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* grid variations */
+.grid-2x2 {
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+.grid-3x3 {
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+}
+
+.grid-4x4 {
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+}
+
+.grid-2x3 {
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+}
+
+.grid-3x2 {
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+/* grid item styling */
+.grid-item {
+  border-radius: 8px;
+  background: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+  min-height: 0; /* important for flexbox in grid */
+}
+
+.top-section {
+  display: flex;
+  gap: 0.5vw;
+  margin-bottom: 1vh;
+  flex: 2; /* give top section more space */
+  min-height: 0; /* allow shrinking */
+}
+
+ .map-section {
+  flex: 1;
+  border: 1px solid #000000;
+  border-radius: 8px;
+  padding: 0.5vi;
+  background: #f9f9f9;
+  min-height: 0; /* allow shrinking */
+  display: flex;
+  flex-direction: column;
+}
+
+
+.control-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 24px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.map-box {
+  flex: 1 1 auto;
+  background: #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  min-height: 10vh;
+}
+
+/* styles for the second live feed layout (rounded video + centered circular controls) */
+.live-feed-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+  padding: 8px 6px 8px 6px;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  /* allow the container to fill the card and let children shrink */
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.video-box {
+  width: min(95%, 780px);
+  /* allow the video area to fill the card height */
+  flex: 1 1 0;
+  height: 100%;
+  min-height: 0;
+  background: #000;
+  border-radius: clamp(8px, 2vw, 16px);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  position: relative; /* create stacking context for overlay */
+}
+
+.video-stream {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.feed-controls {
+  display: flex;
+  gap: clamp(8px, 3vw, 20px);
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  flex: 0 0 auto; /* controls do not grow; they occupy reserved space */
+}
+
+/* overlay variant: absolutely positioned over the video */
+.feed-controls.overlay {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: clamp(4px, 1.5vh, 12px);
+  z-index: 10;
+  pointer-events: auto;
+  /* optional translucent backdrop behind buttons to improve visibility */
+  padding: 2px 6px;
+  background: linear-gradient(180deg, rgba(0,0,0,0.0), rgba(0,0,0,0.05));
+  border-radius: 999px;
+}
+
+.control-circle {
+  /* narrower rounded-rectangle buttons */
+  min-width: clamp(36px, 10vw, 80px);
+  height: clamp(26px, 3.5vw, 34px);
+  padding: 0 8px;
+  border-radius: 8px;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-weight: 700;
+  font-size: clamp(11px, 2vw, 14px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.12);
+  cursor: pointer;
+}
+
+@media (max-width: 480px) {
+  .video-box {
+    width: 100%;
+    aspect-ratio: 4 / 3; /* slightly taller on small screens */
+  }
+  .feed-controls {
+    gap: 12px;
+  }
+  .control-circle {
+    min-width: 44px;
+    height: 30px;
+    font-size: 13px;
+    padding: 0 8px;
+  }
+}
+
+.rec {
+  background: #ff2b2b;
+  color: white;
+}
+
+.refresh {
+  background: #e6e6e6;
+  color: #333;
+}
+
+.play {
+  background: #fff0f0;
+  color: #ff2b2b;
+  border: 2px solid rgba(255,43,43,0.15);
+}
+
+.bottom-section {
+  display: flex;
+  gap: 0.5vw;
+  flex: 1; /* keep bottom section smaller */
+  min-height: 0; /* allow shrinking */
+}
+
+.vehicle-stats, .network-stats {
+  flex: 1;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 12px;
+  background: #f9f9f9;
+}
+
+.bar {
+  height: 10px;
+  width: 100%;
+  border-radius: 4px;
+  margin-top: 4px;
+}
+
+.brake-bar {
+  background: red;
+  width: 40%;
+}
+
+.throttle-bar {
+  background: green;
+  width: 70%;
+}

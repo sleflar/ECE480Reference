@@ -1,0 +1,45 @@
+.connection-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.status-display {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 6px;
+  background: rgba(0, 0, 0, 0.14);
+  border-radius: 4px;
+  font-size: 11px;
+}
+
+.status-icon {
+  font-size: 10px;
+  min-width: 10px;
+  height: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.status-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+}
+
+.main-text {
+  font-weight: 600;
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+.sub-text {
+  /* hide the sub-text visually to keep the pill compact; content available via title/aria-label */
+  display: none;
+  font-size: 9px;
+  color: #cfcfcf;
+  font-family: monospace;
+  white-space: nowrap;
+}

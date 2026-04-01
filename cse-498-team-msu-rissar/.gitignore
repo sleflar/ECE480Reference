@@ -1,0 +1,42 @@
+__pycache__/
+venv/
+venv310/
+Local Website/replay_sessions/
+Local Website/flask_app/replay_sessions/
+ROS2 Code/build/
+ROS2 Code/logs/
+ROS2 Code/install/
+
+# logs
+*.log
+
+# docker
+Dockerfile-dev
+docker-compose.override.yml
+
+# ide
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# os
+.DS_Store
+Thumbs.db
+
+# node
+node_modules/
+npm-debug.log*
+dist/
+
+# Vite lock file
+*.vite
+
+
+# env file
+.env
+
+
+# python cache
+__pycache__/
+*.pyc

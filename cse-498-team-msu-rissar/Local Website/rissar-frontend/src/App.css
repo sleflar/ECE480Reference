@@ -1,0 +1,220 @@
+.app-container {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100dvh;
+  background: white; 
+}
+
+
+.layout-btn {
+  background: black;
+  color: white;
+  border: none;
+  border-radius: 24px;
+  padding: 6px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.layout-btn:hover {
+  background: #333;
+}
+
+.view-buttons {
+  display: flex;
+  background: white;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
+}
+
+/* Layout dropdown/menu styles (ensure dropdowns in TopHeader are styled) */
+.layout-dropdown {
+  position: relative;
+  z-index: 11000;
+}
+
+.layout-menu {
+  position: absolute;
+  right: 0;
+  margin-top: 8px;
+  top: calc(100% + 8px);
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  min-width: 140px;
+  padding: 6px 0;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+  list-style: none;
+}
+
+.layout-menu-item {
+  display: block;
+  width: 100%;
+  padding: 8px 12px;
+  background: transparent;
+  border: none;
+  text-align: left;
+  font-weight: 600;
+  color: #013a06;
+  cursor: pointer;
+}
+
+.layout-menu-item:hover {
+  background: #f5f5f5;
+}
+
+.layout-btn .caret {
+  margin-left: 8px;
+  font-size: 16px;
+  line-height: 1;
+  opacity: 0.95;
+  transition: transform 0.15s ease;
+}
+
+.layout-btn[aria-expanded="true"] .caret {
+  transform: rotate(180deg);
+}
+
+/* Layout dropdown styling */
+.layout-dropdown {
+  position: relative;
+}
+
+.layout-menu {
+  position: absolute;
+  right: 0;
+  margin-top: 8px;
+  top: calc(100% + 8px);
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  min-width: 140px;
+  padding: 6px 0;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+  list-style: none;
+  z-index: 11000; /* ensure dropdown sits above map and other UI layers */
+}
+
+.layout-menu-item {
+  display: block;
+  width: 100%;
+  padding: 8px 12px;
+  background: transparent;
+  border: none;
+  text-align: left;
+  font-weight: 600;
+  color: #013a06;
+  cursor: pointer;
+}
+
+.layout-menu-item:hover {
+  background: #f5f5f5;
+}
+
+.layout-btn .caret {
+  margin-left: 8px;
+  font-size: 16px; /* larger caret for visibility */
+  line-height: 1;
+  opacity: 0.95;
+  transition: transform 0.15s ease;
+}
+
+.layout-btn[aria-expanded="true"] .caret {
+  transform: rotate(180deg);
+}
+
+/* make sure dropdown container can rise above sibling content like maps */
+.layout-dropdown {
+  z-index: 11000;
+}
+
+
+.view-buttons .btn {
+  padding: 6px 14px;
+  border: none;
+  background: transparent;
+  color: #013a06;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.view-buttons .btn.active {
+  background: #003c0f;
+  color: white;
+}
+
+.dropdown{
+  font-family: Arial, sans-serif;
+  margin-bottom: 0.5vh;
+  font-weight: normal;
+  font-size: 16px;
+  width: 100%;
+}
+
+
+/* Two-car view specific grid layout */
+.two-car-view .top-section,
+.two-car-view .bottom-section {
+  display: grid;
+  gap: 12px;
+}
+
+.two-car-view .top-section {
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+  margin-bottom: 12px;
+}
+
+.two-car-view .bottom-section {
+  grid-template-columns: repeat(4, 1fr);
+  align-items: start;
+}
+
+/* the .two-car-cell wrapper handles sizing for grid cells */
+
+.two-car-view .two-car-cell {
+  box-sizing: border-box;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  /* scale with viewport so cards shrink/grow responsively */
+  min-height: 18vh;
+  overflow: hidden;
+}
+
+.two-car-view .two-car-cell > * {
+  /* the CardComponent's root should fill the cell */
+  flex: 1 1 auto;
+  min-height: 0; /* allow flex sizing without overflow */
+}
+
+/* responsive adjustments */
+@media (max-width: 1100px) {
+  .two-car-view .bottom-section {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 700px) {
+  .two-car-view .top-section {
+    grid-template-columns: 1fr;
+  }
+  .two-car-view .bottom-section {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ROS Connection Status Animation */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}

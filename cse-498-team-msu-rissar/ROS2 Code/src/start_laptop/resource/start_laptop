@@ -1,0 +1,3 @@
+#!/usr/bin/env sh
+# ament resource marker for the start_laptop package
+# This file intentionally left minimal — it signals the package to ament/colcon

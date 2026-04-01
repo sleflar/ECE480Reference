@@ -1,0 +1,25 @@
+# production overrides for docker-compose
+# usage: docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d
+
+services:
+  flask-backend:
+    build:
+      target: production
+    volumes: []  # remove development volumes
+    environment:
+      - FLASK_ENV=production
+
+  react-frontend:
+    build:
+      target: production
+    ports:
+      - "3000:3000"  # production uses port 3000
+    volumes: []  # remove development volumes
+
+  ros2-workspace:
+    build:
+      target: production
+    volumes:
+      # keep only log volumes in production
+      - ./ROS2 Code/log:/home/rissar/ros2_ws/log
+      - /dev:/dev
